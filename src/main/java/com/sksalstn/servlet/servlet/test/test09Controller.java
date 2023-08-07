@@ -17,7 +17,9 @@ public class test09Controller extends HttpServlet{
 		
 		PrintWriter out = response.getWriter();
 		
-		// 이름과 자기소개를 전달 받고, 정리된 내용을 html 로 response 담는다.
+
+		// 이름과 자기소개를 전달 받고, 정리된 내용을 html 로 response에 담는다.
+
 		String name = request.getParameter("name");
 		String introduce = request.getParameter("introduce");
 		
@@ -31,20 +33,7 @@ public class test09Controller extends HttpServlet{
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 
 }

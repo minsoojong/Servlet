@@ -17,8 +17,13 @@
 		String fruit = request.getParameter("fruit");
 		
 		//String food = request.getParameter("food");
-		
 		String[] foods = request.getParameterValues("food");
+		
+		String foodString = "";
+		for(int i = 0; i < foods.length; i++){
+			// "민초" + "피자"
+			foodString += foods[i] + " "; // foodString = foodString + foods[i] + " ";
+		}
 	
 	%>
 	
@@ -26,7 +31,7 @@
 	<h4><%= animal %></h4>
 	<h4><%= fruit %></h4>
 	<%-- 민초  피자 --%>
-	<h4><%=  %></h4>
+	<h4><%= foodString %></h4>
 
 </body>
 </html>

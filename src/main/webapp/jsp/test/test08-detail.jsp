@@ -1,19 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>    
+<%@ page import="java.util.*" %>      
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>책 목록</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
-<%
 
-
-List<Map<String, Object>> list = new ArrayList<>();
+	<%    List<Map<String, Object>> list = new ArrayList<>();
     Map<String, Object> map = new HashMap<String, Object>() {
         { 
             put("id", 1000);
@@ -56,39 +54,34 @@ List<Map<String, Object>> list = new ArrayList<>();
             put("image", "http://image.kyobobook.co.kr/images/book/xlarge/194/x9788972756194.jpg");
         } 
     };
-    list.add(map);%>
+    list.add(map); 
+    
+    // 책을 하나 선택할 수 있는 값을 전달 받는다.
+    int id = Integer.parseInt(request.getParameter("id"));
+    
+    %>
+    
 
-		<div class="container">
-		
-	<h1 class="text-center">책 목록</h1>
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>표지</th>
-				<th>제목</th>
-			</tr>	
-		</thead>
-		
-		<tbody>
-			<% for(Map<String, Object> book:list) { %>
-			<tr>
-				<td><%= book.get("id") %></td>
-				<td><img width="150" src="<%= book.get("image")%>"></td>
-				<td class="display-4"><a href="/jsp/test/test08-detail.jsp?id=<%= book.get("id")%>"> <%= book.get("title") %></a></td>
-			</tr>
-			
-			<% } %>	
-				
-			
-			
-			
-			
-			</tbody>
-		
-	</table>
-	
-	</div>	
+	<div class="container">
+		<% for(Map<String, Object> book:list) {
+			int bookId = (Integer)book.get("id");
+			if(id == bookId){
+			%>
+		<div class=d-flex>
+			<div><img src=<%= book.get("image") %>></div>
+			<div class="ml-4">
+				<div class="display-1 font-weight-bold"><%= book.get("title") %></div>
+				<div class="display-2 text-info"><%= book.get("author") %></div>
+				<div class="display-4"><%= book.get("publisher") %></div>
+			</div>
+		</div>
+		<% } %>
+		<%} %>
+	</div>
+
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

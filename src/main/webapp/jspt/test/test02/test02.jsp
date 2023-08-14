@@ -93,29 +93,10 @@
     //int id = Integer.parseInt(request.getParameter("id"));
 %>
 
-
-
 	<div id="wrap">
-		<header class="d-flex">
-			<div class="logo ">
-				<h1 class="text-success text-center pt-3">Melong</h1>		
-			</div>
-			<div class="search">
-				<div class="input-group mb-3">
-  					<input type="text" class="form-control">
- 					<button class="btn btn-success" type="button">검색</button>
-				</div>	
-			</div>
-		</header>
-		<nav class="main-menu ">
-			<ul class="nav d-flex justify-content-start">
-				<li class="nav-item"><a href="#" class="nav-link text-dark font-weight-bold">멜롱챠트</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark font-weight-bold">최신음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark font-weight-bold">장르음악</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark font-weight-bold">멜롱DJ</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-dark font-weight-bold">뮤직어워드</a></li>
-			</ul>
-		</nav>
+		<jsp:include page="header.jsp"  />
+		<jsp:include page="menu.jsp" />
+		
 		<section class="contents">
 			<div class="artist d-flex border border-success p-3 mt-3">
 				<div><img width="200" src="<%= artistInfo.get("photo") %>"></div>
@@ -127,18 +108,15 @@
 				</div>
 			</div>
 			
-			
 			<div class="song-list">
 				<h3>곡목록</h3>
 				<table class="table table-sm text-center">
 					<thead>
-						
 						<tr>
 							<th>no</th>
 							<th>제목</th>
 							<th>앨범</th>
 						</tr>
-						
 					</thead>
 				
 					<tbody>
@@ -151,16 +129,11 @@
 						</tr>
 						</nav>
 						<% } %>
-					
 					</tbody>
-			
 				</table>
 			</div>
 		</section>
-		<footer>
-			<hr>
-			<div class="text-secondary">Copyright © marondal 2021</div>
-		</footer>
+		<jsp:include page="footer.jsp" />
 		
 	
 		

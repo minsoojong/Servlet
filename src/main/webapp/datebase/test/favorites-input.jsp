@@ -11,12 +11,12 @@
 
 	<div>
 		<h1>즐겨찾기 추가</h1> <br>
-		<form method="get" action="/db/favorites/"></form>	
+		<form method="get" action="/db/favorites/insert">
 			<label>사이트명 : </label> <br>
 			<input type="text" name="name"> <br>
 			<label>사이트 주소 : </label> <br>
 			<input type="text" name="url"> <br>
-			<button type="submit">추가</button>
+			<button type="submit" class="btn btn-success">추가</button>
 		</form>		
 	</div>
 

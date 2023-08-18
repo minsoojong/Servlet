@@ -14,10 +14,12 @@ import com.sksalstn.servlet.common.MysqlService;
 public class FavoritesInsertController extends HttpServlet{
 	
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/plain");
 		
 		PrintWriter out = response.getWriter();	
+		
+		// 사이트 이름과 사이트 주소를 전달 받고, 해당 값을 database에 저장한다.
 		
 		String name = request.getParameter("name");
 		String url = request.getParameter("url");
@@ -26,11 +28,13 @@ public class FavoritesInsertController extends HttpServlet{
 		mysqlService.connect();
 		
 		String query = "INSERT INTO `favorites`\r\n"
-				+ "(`name`, `url`, `createdAt`, `updateAt`)\r\n"
+				+ "(`name`, `url`)\r\n"
 				+ "VALUE\r\n"
-				+ "('인스타', 'http://instagram.com', now(), now());";
+				+ "('" + name + "', '" + url + "');";
 		
 		int count = mysqlService.update(query);
+		
+//		out.println("실행 결과 : " + count);
 		
 		mysqlService.disconnect();
 		
